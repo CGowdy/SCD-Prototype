@@ -7,9 +7,9 @@
     <ProjectGuid>{EE38D411-4E34-482A-8297-AC67A0F0E16B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VDF_Parser</RootNamespace>
+    <RootNamespace>VDFParser</RootNamespace>
     <AssemblyName>VDF_Parser</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>

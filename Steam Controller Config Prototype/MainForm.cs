@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Controller_Config_Items;
+using Controller_Input_Items;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-
+using VDF_Parser;
 
 namespace Steam_Controller_Config_Prototype
 {
@@ -27,7 +29,7 @@ namespace Steam_Controller_Config_Prototype
             {
                 desktopVDFFileLoc = ofd.FileName;
             }
-            VDFParser parser = new VDF_Parser();
+            VDFParser parser = new VDFParser();
             ParentKey parent = parser.Parse(new StreamReader(File.Open(desktopVDFFileLoc, FileMode.Open)));
 
 
@@ -42,7 +44,7 @@ namespace Steam_Controller_Config_Prototype
         {
             try
             {
-                VDFParser parser = new VDF_Parser();
+                VDFParser parser = new VDFParser();
                 ParentKey parent = parser.Parse(new StreamReader(File.Open(desktopVDFFileLoc, FileMode.Open)));
                 controllerMapping = new ControllerMapping();
                 controllerMapping.ParseParentKey(parent);
