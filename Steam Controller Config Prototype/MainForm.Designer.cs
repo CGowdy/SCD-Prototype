@@ -31,8 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -41,6 +41,9 @@
             this.lbl_X_Button = new System.Windows.Forms.Label();
             this.lbl_B_Button = new System.Windows.Forms.Label();
             this.lbl_Y_Button = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbxFolderPath = new System.Windows.Forms.TextBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -73,25 +76,27 @@
             this.loadToolStripMenuItem.Text = "Load Desktop.vdf";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
-            // button1
+            // btnImport
             // 
-            this.button1.Location = new System.Drawing.Point(459, 615);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Import VDF";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnImport.Enabled = false;
+            this.btnImport.Location = new System.Drawing.Point(459, 615);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 1;
+            this.btnImport.Text = "Import VDF";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // button2
+            // btnExport
             // 
-            this.button2.Location = new System.Drawing.Point(540, 615);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Export VDF";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnExport.Enabled = false;
+            this.btnExport.Location = new System.Drawing.Point(540, 615);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 2;
+            this.btnExport.Text = "Export VDF";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // pictureBox1
             // 
@@ -171,11 +176,41 @@
             this.lbl_Y_Button.TabIndex = 10;
             this.lbl_Y_Button.Text = "Test Text";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Steam Folderpath:";
+            // 
+            // tbxFolderPath
+            // 
+            this.tbxFolderPath.Location = new System.Drawing.Point(111, 34);
+            this.tbxFolderPath.Name = "tbxFolderPath";
+            this.tbxFolderPath.ReadOnly = true;
+            this.tbxFolderPath.Size = new System.Drawing.Size(277, 20);
+            this.tbxFolderPath.TabIndex = 12;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(394, 32);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 13;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 650);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.tbxFolderPath);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_Y_Button);
             this.Controls.Add(this.lbl_B_Button);
             this.Controls.Add(this.lbl_X_Button);
@@ -184,8 +219,8 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -206,8 +241,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -216,6 +251,9 @@
         private System.Windows.Forms.Label lbl_X_Button;
         private System.Windows.Forms.Label lbl_B_Button;
         private System.Windows.Forms.Label lbl_Y_Button;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbxFolderPath;
+        private System.Windows.Forms.Button btnBrowse;
     }
 }
 

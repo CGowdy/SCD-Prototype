@@ -25,6 +25,12 @@
         {
             return value;
         }
+        
+
+        public void SetValue(string val)
+        {
+            value = val;
+        }
 
         public override string ToString()
         {

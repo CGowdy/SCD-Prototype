@@ -50,7 +50,7 @@ namespace Controller_Config_Items
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("\"group\"");
-            sb.AppendLine("}");
+            sb.AppendLine("{");
             foreach (KeyValue keyvalue in base.keyValues)
             {
                 sb.AppendLine("\t\"" + keyvalue.GetKey() + "\"\t\"" + keyvalue.GetValue() + "\"");

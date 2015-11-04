@@ -10,15 +10,16 @@ namespace Steam_Controller_Config_Prototype
 {
     public partial class MainForm : Form
     {
+        private const string STEAM_DESKTOP_CONFIG_DESC_TEXT = "#SettingsControllerCfg_ConfigDesktop_Desc";
         private string desktopVDFFileLoc;
         private ControllerMapping controllerMapping;
+        private A_Button a;
+        private B_Button b;
+        private X_Button x;
+        private Y_Button y;
         public MainForm()
         {
             InitializeComponent();
-
-#if DEBUG
-            desktopVDFFileLoc = "C:\\Program Files (x86)\\Steam\\controller_base\\steamdesktop.vdf";
-#endif
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,9 +39,10 @@ namespace Steam_Controller_Config_Prototype
 
 
 
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnImport_Click(object sender, EventArgs e)
         {
             try
             {
@@ -49,13 +51,13 @@ namespace Steam_Controller_Config_Prototype
                 controllerMapping = new ControllerMapping();
                 controllerMapping.ParseParentKey(parent);
 
-                A_Button a = new A_Button(controllerMapping);
+                a = new A_Button(controllerMapping);
+                b = new B_Button(controllerMapping);
+                x = new X_Button(controllerMapping);
+                y = new Y_Button(controllerMapping);
                 lbl_A_Button.Text = a.action;
-                B_Button b = new B_Button(controllerMapping);
                 lbl_B_Button.Text = b.action;
-                X_Button x = new X_Button(controllerMapping);
                 lbl_X_Button.Text = x.action;
-                Y_Button y = new Y_Button(controllerMapping);
                 lbl_Y_Button.Text = y.action;
 
             }
@@ -68,21 +70,24 @@ namespace Steam_Controller_Config_Prototype
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            Stream s;
-            if(sfd.ShowDialog() == DialogResult.OK)
-            {
-                if((s = sfd.OpenFile()) != null)
-                {
-                    using(StreamWriter sw = new StreamWriter(s))
-                    {
-                        sw.WriteLine(controllerMapping.ExportToVDF());
-                    }
-                }
-            }
-            
+            //SaveFileDialog sfd = new SaveFileDialog();
+            //Stream s;
+            //if(sfd.ShowDialog() == DialogResult.OK)
+            //{
+            //    if((s = sfd.OpenFile()) != null)
+            //    {
+            //        using(StreamWriter sw = new StreamWriter(s))
+            //        {
+            //            sw.WriteLine(controllerMapping.ExportToVDF());
+            //        }
+            //    }
+            //}
+            File.Delete(desktopVDFFileLoc + ".bak");
+            File.Copy(desktopVDFFileLoc, desktopVDFFileLoc + ".bak");
+            File.WriteAllText(desktopVDFFileLoc, controllerMapping.ExportToVDF());
+
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -92,7 +97,45 @@ namespace Steam_Controller_Config_Prototype
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            InputForm inForm = new InputForm();
+            inForm.ShowDialog();
+            lbl_A_Button.Text = "key_press " + inForm.pressedKey.ToUpper();
+            a.action = lbl_A_Button.Text;
+            a.ChangeAction(a.action);
 
+
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            string steamFolderPath = "";
+            ofd.Description = "Select Steam Folder...";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                steamFolderPath = ofd.SelectedPath.ToString();
+            }
+            //TODO: Need to have some catch here if dialog doesn't work
+
+            foreach (string f in Directory.GetFiles(steamFolderPath, "*autosave.vdf", SearchOption.AllDirectories))
+            {
+                using (StreamReader sr = new StreamReader(File.Open(f, FileMode.Open)))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        if (sr.ReadLine().Contains(STEAM_DESKTOP_CONFIG_DESC_TEXT) && f.Contains("autosave"))
+                        {
+                            desktopVDFFileLoc = f;
+                            tbxFolderPath.Text = desktopVDFFileLoc;
+                            btnImport.Enabled = true;
+                            btnExport.Enabled = true;
+                            break;
+                        }
+
+                    }
+
+                }
+            }
         }
     }
 }

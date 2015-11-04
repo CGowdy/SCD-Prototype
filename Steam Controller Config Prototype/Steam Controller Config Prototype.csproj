@@ -65,6 +65,12 @@
     <Compile Include="Controller Input Items\B_Button.cs" />
     <Compile Include="Controller Input Items\A_Button.cs" />
     <Compile Include="Controller Input Items\Button.cs" />
+    <Compile Include="InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputForm.Designer.cs">
+      <DependentUpon>InputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="VDF Parser\KeyValue.cs" />
     <Compile Include="VDF Parser\ParentKey.cs" />
     <Compile Include="VDF Parser\VDFParser.cs" />
+    <EmbeddedResource Include="InputForm.resx">
+      <DependentUpon>InputForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
