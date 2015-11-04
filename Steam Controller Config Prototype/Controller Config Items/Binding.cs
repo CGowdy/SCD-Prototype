@@ -1,16 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using VDF_Parser;
 
 namespace Controller_Config_Items
 {
     class Binding : ControllerComponentObject
     {
-        public List<KeyValue> keyValues { get; set; }
 
         public Binding()
         {
-            keyValues = new List<KeyValue>();
         }
         public override string ExportToVDF()
         {
@@ -18,7 +15,7 @@ namespace Controller_Config_Items
 
             sb.AppendLine("\"bindings\"");
             sb.AppendLine("{");
-            foreach(KeyValue kv in keyValues)
+            foreach(KeyValue kv in base.keyValues)
             {
                 sb.AppendLine("\t\"" + kv.GetKey() + "\"\t\"" + kv.GetValue() + "\"");
             }
@@ -28,7 +25,7 @@ namespace Controller_Config_Items
 
         public override void ParseParentKey(ParentKey parent)
         {
-            keyValues = parent.GetKeyValues();
+            base.keyValues = parent.GetKeyValues();
         }
     }
 }

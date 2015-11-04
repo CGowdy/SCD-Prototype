@@ -1,6 +1,6 @@
-﻿using VDF_Parser;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
+using VDF_Parser;
 
 namespace Controller_Config_Items
 {
@@ -8,18 +8,16 @@ namespace Controller_Config_Items
     {
         public List<Group> groups { get; set; }
         public List<Preset> presets { get; set; }
-        public List<KeyValue> keyValues { get; set; }
 
         public ControllerMapping()
         {
             groups = new List<Group>();
             presets = new List<Preset>();
-            keyValues = new List<KeyValue>();
         }
 
         public override void ParseParentKey(ParentKey parent)
         {
-            keyValues = parent.GetKeyValues();
+            base.keyValues = parent.GetKeyValues();
             foreach (ParentKey child in parent.GetChildren())
             {
                 switch (child.GetKey())
@@ -44,9 +42,9 @@ namespace Controller_Config_Items
 
             sb.AppendLine("\"controller_mappings\"");
             sb.AppendLine("{");
-            foreach(KeyValue keyValue in keyValues)
+            foreach(KeyValue keyValue in base.keyValues)
             {
-                sb.AppendLine("\t\"" + keyValue.GetKey() + "\"\t\"" + keyValue.GetKey() + "\"");
+                sb.AppendLine("\t\"" + keyValue.GetKey() + "\"\t\"" + keyValue.GetValue() + "\"");
             }
             foreach (Group group in groups)
             {

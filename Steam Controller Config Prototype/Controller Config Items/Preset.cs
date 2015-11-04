@@ -6,14 +6,12 @@ namespace Controller_Config_Items
 {
     class Preset : ControllerComponentObject
     {
-        public List<KeyValue> keyValues { get; set; }
         public List<GroupSourceBinding> groupSourceBindings { get; set; }
         public List<SwitchBinding> switchBindings { get; set; }
         public List<Setting> settings { get; set; }
 
         public Preset()
         {
-            keyValues = new List<KeyValue>();
             groupSourceBindings = new List<GroupSourceBinding>();
             switchBindings = new List<SwitchBinding>();
             settings = new List<Setting>();
@@ -21,7 +19,7 @@ namespace Controller_Config_Items
 
         public override void ParseParentKey(ParentKey parent)
         {
-            keyValues = parent.GetKeyValues();
+            base.keyValues = parent.GetKeyValues();
             foreach(ParentKey child in parent.GetChildren())
             {
                 switch (child.GetKey())
@@ -51,7 +49,7 @@ namespace Controller_Config_Items
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("\"preset\"");
             sb.AppendLine("{");
-            foreach(KeyValue keyvalue in keyValues)
+            foreach(KeyValue keyvalue in base.keyValues)
             {
                 sb.AppendLine("\t\"" + keyvalue.GetKey() + "\"\t\"" + keyvalue.GetValue() + "\"");
             }

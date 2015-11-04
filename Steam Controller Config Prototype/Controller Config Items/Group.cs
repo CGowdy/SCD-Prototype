@@ -6,12 +6,10 @@ namespace Controller_Config_Items
 {
     class Group : ControllerComponentObject
     {
-        public List<KeyValue> keyValues { get; set; }
         public List<Binding> bindings { get; set; }
         public List<Setting> settings { get; set; }
         public Group()
         {
-            keyValues = new List<KeyValue>();
             bindings = new List<Binding>();
             settings = new List<Setting>();
         }
@@ -28,7 +26,7 @@ namespace Controller_Config_Items
 
         public override void ParseParentKey(ParentKey parent)
         {
-            keyValues = parent.GetKeyValues();
+            base.keyValues = parent.GetKeyValues();
             foreach (ParentKey child in parent.GetChildren())
             {
                 switch (child.GetKey())
@@ -53,7 +51,7 @@ namespace Controller_Config_Items
 
             sb.AppendLine("\"group\"");
             sb.AppendLine("}");
-            foreach (KeyValue keyvalue in keyValues)
+            foreach (KeyValue keyvalue in base.keyValues)
             {
                 sb.AppendLine("\t\"" + keyvalue.GetKey() + "\"\t\"" + keyvalue.GetValue() + "\"");
             }
