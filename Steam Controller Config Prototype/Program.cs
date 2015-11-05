@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Steam_Controller_Config_Prototype
+namespace SCD_Prototype
 {
     static class Program
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Steam_Controller_Config_Prototype.Properties {
+namespace SCD_Prototype.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

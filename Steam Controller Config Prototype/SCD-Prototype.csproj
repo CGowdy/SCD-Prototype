@@ -7,8 +7,8 @@
     <ProjectGuid>{9A1AF45C-5677-4A06-B54A-BCDE395F3891}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Steam_Controller_Config_Prototype</RootNamespace>
-    <AssemblyName>Steam Controller Config Prototype</AssemblyName>
+    <RootNamespace>SCD_Prototype</RootNamespace>
+    <AssemblyName>SCD-Prototype</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,7 +36,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Steam_Controller_Config_Prototype.Program</StartupObject>
+    <StartupObject>SCD_Prototype.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

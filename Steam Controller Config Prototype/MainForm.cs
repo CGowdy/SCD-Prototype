@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using VDF_Parser;
 
-namespace Steam_Controller_Config_Prototype
+namespace SCD_Prototype
 {
     public partial class MainForm : Form
     {

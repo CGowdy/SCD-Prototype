@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Steam_Controller_Config_Prototype
+namespace SCD_Prototype
 {
     public partial class InputForm : Form
     {

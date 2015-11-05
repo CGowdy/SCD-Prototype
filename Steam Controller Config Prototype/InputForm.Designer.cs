@@ -1,4 +1,4 @@
-﻿namespace Steam_Controller_Config_Prototype
+﻿namespace SCD_Prototype
 {
     partial class InputForm
     {
