@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Steam Controller Config Prototype", "Steam Controller Config Prototype\Steam Controller Config Prototype.csproj", "{9A1AF45C-5677-4A06-B54A-BCDE395F3891}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCD-Prototype", "Steam Controller Config Prototype\SCD-Prototype.csproj", "{9A1AF45C-5677-4A06-B54A-BCDE395F3891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
